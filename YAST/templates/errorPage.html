@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>YAST | Error Encountered</title>
+        <link href="{% static "css/style_homePage.css" %}" rel="stylesheet" />
+		<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" />
+        <link href="{% static "css/style.css" %}" rel="stylesheet" />
+		<link href="{% static "css/ionicons.min.css" %}" rel="stylesheet" />
+        <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" />
+</head>
+
+<body>
+
+        <div class="grad"></div>
+		<div class="header row">
+            <div class="col-sm-7 col-sm-offset-3">Oops!</div>
+            
+            
+            
+            <div class="col-sm-10 col-sm-offset-3 offset-sm-5">{{data.message}}.<br><br></div>
+            <br>
+            
+        </div>  
+		<br>
+		</div>
+
+</body>
+    <script src="{% static "js/prefixfree.min.js" %}"></script>
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/jquery.appear.min.js" %}"></script>
+	<script src="{% static "js/jquery.incremental-counter.js" %}"></script>
+    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static "js/bootbox.min.js" %}"></script>
+</html>

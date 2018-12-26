@@ -1,0 +1,48 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+ 
+body {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(0,0,0,0.65))), url(notebook.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    positon:
+
+}
+ 
+.header{
+    margin-top:20%;
+    position:fixed;
+    
+}
+
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 30px;
+	font-weight: 200;
+}
+
+.header div span{
+	color: #00CED1 !important;
+    font-weight: bold; 
+}
+
+.heart-rate {
+  width: 300px;
+  height: 73px;
+}
+
+.btn,
+.btn:hover,
+.btn:active,
+.btn:visited,
+.btn:focus {
+    background-color: #00CED1 !important;
+    color: white;
+}

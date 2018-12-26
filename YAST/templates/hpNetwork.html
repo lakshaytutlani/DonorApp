@@ -1,0 +1,411 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+    <title>YAST | DONORS</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "vendors/bootstrap/dist/css/bootstrap.min.css" %}"  rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="{% static "vendors/font-awesome/css/font-awesome.min.css" %}"  rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="{% static "vendors/nprogress/nprogress.css" %}"  rel="stylesheet" />
+    <!-- iCheck -->
+    <link href="{% static "vendors/iCheck/skins/flat/green.css" %}"  rel="stylesheet" />
+    <!-- bootstrap-wysiwyg -->
+    <link href="{% static "vendors/google-code-prettify/bin/prettify.min.css" %}"  rel="stylesheet" />
+    <!-- Select2 -->
+    <link href="{% static "vendors/select2/dist/css/select2.min.css" %}"  rel="stylesheet" />
+    <!-- Switchery -->
+    <link href="{% static "vendors/switchery/dist/switchery.min.css" %}"  rel="stylesheet" />
+    <!-- starrr -->
+    <link href="{% static "vendors/starrr/dist/starrr.css" %}"  rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static "vendors/bootstrap-daterangepicker/daterangepicker.css" %}"  rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="{% static "build/css/custom.min.css" %}"  rel="stylesheet" />
+
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title text-center" style="border: 0; background:#006dcc;">
+                
+              <a href="index.html" class="site_title"><img class="text-center" style="height:25px; width:25px;" src="{% static "images/logo_small.png" %}"  />&nbsp;<span class="text-center">YAST</span></a>
+            </div>
+
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="text-center">
+                <h5 style="color:white;">Welcome, <b>{{data.username}}</b></h5> 
+                <hr color="white" width="80%">
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu" style="font-size:13px;">
+                  <li><a href="../dashboard/"><i class="fa fa-edit"></i> Dashboard</a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li ><a href="../topDonors/"><i class="fa fa-desktop"></i>Potential Donors</a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li><a href = "../bloodMonitor/"><i class="fa fa-table"></i>Blood Bank Monitor  </a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li class="active"><a href = "../network/"><i class="fa fa-edit"></i>Network Graphs</a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li><a href = "../reward/"><i class="fa fa-desktop"></i>Reward</a>
+                  </li>
+                  <hr color="white" width="80%">
+
+
+                </ul>
+              </div>
+              </div>
+
+
+            </div>
+            <!-- /sidebar menu -->
+
+
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">{{data.username}}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="../login"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>{{data}}</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Volunteer required in New Jersey...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Potential Donors</h3>
+              </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                             <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    
+                  <div class="x_content">
+                  
+                  <div id="container" class="col-md-12 col-sm-12 col-xs-12" style="height:600px;"></div>
+                  
+                  </div>
+ 
+					
+                    
+					
+                  </div>
+                </div>
+              </div>
+
+           
+
+            </div>
+
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            YAST - You Are SomeBody's Type 
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static "vendors/jquery/dist/jquery.min.js" %}" ></script>
+    <!-- High Charts -->
+
+    <script src="{% static "js/highmaps.js" %}" ></script> 
+      
+    <script src="{% static "js/us-all.js" %}" ></script> 
+    <script src="{% static "js/exporting.js" %}" ></script> 
+    <script src="{% static "offline-exporting.js" %}" ></script> 
+    <script src="https://code.highcharts.com/mapdata/countries/us/us-all-all.js"></script>
+    <script src="{% static "js/proj4js.js" %}" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+    <!-- Bootstrap -->
+    <script src="{% static "vendors/bootstrap/dist/js/bootstrap.min.js" %}" ></script>
+    <!-- FastClick -->
+    <script src="{% static "vendors/fastclick/lib/fastclick.js" %}" ></script>
+    <!-- NProgress -->
+    <script src="{% static "vendors/nprogress/nprogress.js" %}" ></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{% static "vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}" ></script>
+    <!-- iCheck -->
+    <script src="{% static "vendors/iCheck/icheck.min.js" %}" ></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{% static "vendors/moment/moment.min.js" %}" ></script>
+    <script src="{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}" ></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="{% static "vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js" %}" ></script>
+    <script src="{% static "vendors/jquery.hotkeys/jquery.hotkeys.js" %}" ></script>
+    <script src="{% static "vendors/google-code-prettify/src/prettify.js" %}" ></script>
+    <!-- jQuery Tags Input -->
+    <script src="{% static "vendors/jquery.tagsinput/src/jquery.tagsinput.js" %}" ></script>
+    <!-- Switchery -->
+    <script src="{% static "vendors/switchery/dist/switchery.min.js" %}" ></script>
+    <!-- Select2 -->
+    <script src="{% static "vendors/select2/dist/js/select2.full.min.js" %}" ></script>
+    <!-- Parsley -->
+    <script src="{% static "vendors/parsleyjs/dist/parsley.min.js" %}" ></script>
+    <!-- Autosize -->
+    <script src="{% static "vendors/autosize/dist/autosize.min.js" %}" ></script>
+    <!-- jQuery autocomplete -->
+    <script src="{% static "vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js" %}" ></script>
+    <!-- starrr -->
+    <script src="{% static "vendors/starrr/dist/starrr.js" %}" ></script>
+        <!-- Datatables -->
+    <script src="{% static "vendors/datatables.net/js/jquery.dataTables.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-bs/js/dataTables.bootstrap.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/dataTables.buttons.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js" %}" ></script>   
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.flash.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.html5.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.print.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js" %}" ></script>
+
+    <script src="{% static "vendors/datatables.net-keytable/js/dataTables.keyTable.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-responsive/js/dataTables.responsive.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-scroller/js/dataTables.scroller.min.js" %}" ></script>
+    <script src="{% static "js/bootbox.min.js" %}"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="{% static "build/js/custom.min.js" %}" ></script>
+    
+    <script>
+        
+
+    
+   
+    
+    $(function () { 
+    
+    var H = Highcharts,
+    map = H.maps['countries/us/us-all'],
+    chart;
+
+// Add series with state capital bubbles
+    json = {{ data_json|safe }}
+    console.log(json)
+    json2 = [{
+            "capital":"Olympia",
+            "lat":47.039231,
+            "lon":-89.386694,
+          },
+          {
+            "capital":"Charleston",
+            "lat":38.350195,
+            "lon":-81.638989,
+          },
+          {
+            "capital":"Madison",
+            "lat":43.072950,
+            "lon":-89.386694,
+          },
+          {
+            "capital":"Cheyenne",
+            "lat":41.134815,
+            "lon":-104.821544,
+          }
+       ]
+    var data = [];
+    $.each(json, function (index) {
+        this.capital = json[index].fields.CITY
+        this.lat = parseFloat(json[index].fields.LATITUDE)
+        this.lon = parseFloat(json[index].fields.LONGITUDE)
+        this.z = json[index].fields["ABNegative"] + json[index].fields["ANegative"] + json[index].fields["BNegative"] + json[index].fields["ONegative"] + json[index].fields["ABPositive"] + json[index].fields["APositive"] + json[index].fields["BPositive"] + json[index].fields["OPositive"];
+        data.push(this);
+    });
+
+    chart = Highcharts.mapChart('container', {
+        title: {
+            text: 'Near by Blood Collection Centers'
+        },
+
+        tooltip: {
+            pointFormat: '{point.capital}, {point.parentState}<br>' +
+                'Lat: {point.lat}<br>' +
+                'Lon: {point.lon}<br>' +
+                'Units Avai.: {point.z}'
+        },
+
+        xAxis: {
+            crosshair: {
+                zIndex: 5,
+                dashStyle: 'dot',
+                snap: false,
+                color: 'gray'
+            }
+        },
+
+        yAxis: {
+            crosshair: {
+                zIndex: 5,
+                dashStyle: 'dot',
+                snap: false,
+                color: 'gray'
+            }
+        },
+
+        series: [{
+            name: 'Basemap',
+            mapData: map,
+            borderColor: '#606060',
+            nullColor: 'rgba(200, 200, 200, 0.2)',
+            showInLegend: false
+        }, {
+            name: 'Separators',
+            type: 'mapline',
+            data: H.geojson(map, 'mapline'),
+            color: '#101010',
+            enableMouseTracking: false,
+            showInLegend: false
+        }, {
+            type: 'mapbubble',
+            dataLabels: {
+                enabled: true,
+                format: '{point.capital}'
+            },
+            name: 'Cities',
+            data: data,
+            maxSize: '12%',
+            color: H.getOptions().colors[0]
+        }]
+    });
+//});
+
+// Display custom label with lat/lon next to crosshairs
+$('#container').mousemove(function (e) {
+    var position;
+    if (chart) {
+        if (!chart.lab) {
+            chart.lab = chart.renderer.text('', 0, 0)
+                .attr({
+                    zIndex: 5
+                })
+                .css({
+                    color: '#505050'
+                })
+                .add();
+        }
+
+        e = chart.pointer.normalize(e);
+        position = chart.fromPointToLatLon({
+            x: chart.xAxis[0].toValue(e.chartX),
+            y: chart.yAxis[0].toValue(e.chartY)
+        });
+
+        chart.lab.attr({
+            x: e.chartX + 5,
+            y: e.chartY - 22,
+            text: 'Lat: ' + position.lat.toFixed(2) + '<br>Lon: ' + position.lon.toFixed(2)
+        });
+    }
+});
+
+$('#container').mouseout(function () {
+    if (chart && chart.lab) {
+        chart.lab.destroy();
+        chart.lab = null;
+    }
+});
+    
+    });
+
+ 
+    </script>
+    
+   
+    
+    
+    
+    
+  </body>
+</html>

@@ -1,0 +1,1009 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+    <title>YAST | BLOOD STOCK</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "vendors/bootstrap/dist/css/bootstrap.min.css" %}"  rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="{% static "vendors/font-awesome/css/font-awesome.min.css" %}"  rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="{% static "vendors/nprogress/nprogress.css" %}"  rel="stylesheet" />
+    <!-- iCheck -->
+    <link href="{% static "vendors/iCheck/skins/flat/green.css" %}"  rel="stylesheet" />
+    <!-- bootstrap-wysiwyg -->
+    <link href="{% static "vendors/google-code-prettify/bin/prettify.min.css" %}"  rel="stylesheet" />
+    <!-- Select2 -->
+    <link href="{% static "vendors/select2/dist/css/select2.min.css" %}"  rel="stylesheet" />
+    <!-- Switchery -->
+    <link href="{% static "vendors/switchery/dist/switchery.min.css" %}"  rel="stylesheet" />
+    <!-- starrr -->
+    <link href="{% static "vendors/starrr/dist/starrr.css" %}"  rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static "vendors/bootstrap-daterangepicker/daterangepicker.css" %}"  rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="{% static "build/css/custom.min.css" %}"  rel="stylesheet" />
+    <style>
+        #containerA, #containerAB, #containerO, #containerB{
+            max-width: 800px;
+            height: 120px;
+            margin: 1em auto;
+        }
+
+        .hc-cat-title {
+          font-size: 13px;
+          font-weight: bold;
+        }
+    
+    </style>
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title text-center" style="border: 0; background:#006dcc;">
+                
+              <a href="index.html" class="site_title"><img class="text-center" style="height:25px; width:25px;" src="{% static "images/logo_small.png" %}"  />&nbsp;<span class="text-center">YAST</span></a>
+            </div>
+
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="text-center">
+                <h5 style="color:white;">Welcome, <b>{{data.username}}</b></h5> 
+                <hr color="white" width="80%">
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu" style="font-size:13px;">
+                  <li><a href="../dashboard/"><i class="fa fa-edit"></i> Dashboard</a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li><a href = "../topDonors/"><i class="fa fa-desktop"></i>Potential Donors</a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li class="active"><a href="../bloodMonitor/"><i class="fa fa-table"></i>Blood Bank Monitor  </a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li><a href="../network/"><i class="fa fa-edit"></i>Network Graphs</a>
+                  </li>
+                  <hr color="white" width="80%">
+                  <li><a href="../reward/"><i class="fa fa-desktop"></i>Reward</a>
+                  </li>
+                  <hr color="white" width="80%">
+
+                </ul>
+              </div>
+              </div>
+
+
+            </div>
+            <!-- /sidebar menu -->
+
+
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">{{data.username}}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="../login"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>{{data}}</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Volunteer required in New Jersey...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Blood Bank Monitor</h3>
+              </div>
+
+            </div>
+            <div class="clearfix"></div>
+               <div class="x_content">
+                    <div  class="col-sm-12">
+                        <div class="tile-stats col-sm-6">
+
+                            <h3 style="color:#006dcc; padding:10px;"><small style="color:#006dcc;">Abundant Groups:</small><span style="right: 40px; position:absolute;" id="abud">23</span></h3>
+                          
+
+                        </div>
+                       <div class="tile-stats col-sm-6">
+
+                            <h3 style="color:#006dcc; padding:10px;"><small style="color:#006dcc;">Required Groups:</small><span style="right: 40px; position:absolute;" id="req">23</span></h3>
+                          
+
+                        </div>
+                    
+                    </div>
+                  </div>
+            
+            
+             <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Current Status <small>Capacity Insights</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Blood Group</th>
+                          <th>Current Units</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>A+</td>
+                          <td id="AposCU">Otto</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>B+</td>
+                          <td id="BposCU">Thornton</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>AB+</td>
+                          <td id="ABposCU">the Bird</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>O+</td>
+                          <td id="OposCU">Otto</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>A-</td>
+                          <td id="AnegCU">Thornton</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">6</th>
+                          <td>B-</td>
+                          <td id="BnegCU">the Bird</td>
+                        </tr>               
+                        <tr>
+                          <th scope="row">7</th>
+                          <td>AB-</td>
+                          <td id="ABnegCU">Thornton</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">8</th>
+                          <td>O-</td>
+                          <td id="OnegCU">the Bird</td>
+                        </tr>                              
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Current Donations Recieved </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Blood Group</th>
+                          <th>Current Units</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>A+</td>
+                          <td id="AposCDon">Otto</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>B+</td>
+                          <td id="BposCDon">Thornton</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>AB+</td>
+                          <td id="ABposCDon">the Bird</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>O+</td>
+                          <td id="OposCDon">Otto</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>A-</td>
+                          <td id="AnegCDon">Thornton</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">6</th>
+                          <td>B-</td>
+                          <td id="BnegCDon">the Bird</td>
+                        </tr>               
+                        <tr>
+                          <th scope="row">7</th>
+                          <td>AB-</td>
+                          <td id="ABnegCDon">Thornton</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">8</th>
+                          <td>O-</td>
+                          <td id="OnegCDon">the Bird</td>
+                        </tr>                              
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Target | Threshold Insight </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="containerA" class="col-sm-6"></div>
+                    <div id="containerB" class="col-sm-6"></div>
+
+
+
+
+                    <div id="containerAB" class="col-sm-6"></div>
+                    <div id="containerO" class="col-sm-6"></div>
+                    </table>
+                  </div>
+                </div>
+              </div>
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Blood Generic Insights</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                <div class="x_content">
+                    <div id="container" class="col-sm-3 tile-stats"></div>
+                   <div class=" col-sm-3" >
+                    <div class="tile-stats col-sm-12" >
+                            <h3 style="color:#006dcc; padding:10px;"><small style="color:#006dcc;">HEPATITUS_POS:</small><br><span id="hep">23</span></h3>
+                    </div>
+                    <div class="tile-stats col-sm-12" >
+                            <h3 style="color:#006dcc; padding:10px;"><small style="color:#006dcc;">HIV_POS:</small><br><span id="hiv">23</span></h3>
+                    </div>
+                    <div class="tile-stats col-sm-12" >
+                            <h3 style="color:#006dcc; padding:10px;"><small style="color:#006dcc;">OTHER_DISEASE:</small><br><span id="od">23</span></h3>
+                    </div>
+                    <div class="tile-stats col-sm-12" >
+                            <h3 style="color:#006dcc; padding:10px;"><small style="color:#006dcc;">SYSPHILIS:</small><br><span id="sys">23</span></h3>
+                    </div>                    
+                    </div>
+                    <div id="container2" class="col-sm-6 tile-stats"></div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            YAST - You Are SomeBody's Type 
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static "vendors/jquery/dist/jquery.min.js" %}" ></script>
+    <!-- High Charts -->
+    <script src="{% static "js/highcharts.js" %}" ></script>
+    <script src="{% static "js/highcharts-3d.js" %}" ></script>
+    <!-- Bootstrap -->
+    <script src="{% static "vendors/bootstrap/dist/js/bootstrap.min.js" %}" ></script>
+    <!-- FastClick -->
+    <script src="{% static "vendors/fastclick/lib/fastclick.js" %}" ></script>
+    <!-- NProgress -->
+    <script src="{% static "vendors/nprogress/nprogress.js" %}" ></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{% static "vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}" ></script>
+    <!-- iCheck -->
+    <script src="{% static "vendors/iCheck/icheck.min.js" %}" ></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{% static "vendors/moment/moment.min.js" %}" ></script>
+    <script src="{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}" ></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="{% static "vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js" %}" ></script>
+    <script src="{% static "vendors/jquery.hotkeys/jquery.hotkeys.js" %}" ></script>
+    <script src="{% static "vendors/google-code-prettify/src/prettify.js" %}" ></script>
+    <!-- jQuery Tags Input -->
+    <script src="{% static "vendors/jquery.tagsinput/src/jquery.tagsinput.js" %}" ></script>
+    <!-- Switchery -->
+    <script src="{% static "vendors/switchery/dist/switchery.min.js" %}" ></script>
+    <!-- Select2 -->
+    <script src="{% static "vendors/select2/dist/js/select2.full.min.js" %}" ></script>
+    <!-- Parsley -->
+    <script src="{% static "vendors/parsleyjs/dist/parsley.min.js" %}" ></script>
+    <!-- Autosize -->
+    <script src="{% static "vendors/autosize/dist/autosize.min.js" %}" ></script>
+    <!-- jQuery autocomplete -->
+    <script src="{% static "vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js" %}" ></script>
+    <!-- starrr -->
+    <script src="{% static "vendors/starrr/dist/starrr.js" %}" ></script>
+        <!-- Datatables -->
+    <script src="{% static "vendors/datatables.net/js/jquery.dataTables.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-bs/js/dataTables.bootstrap.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/dataTables.buttons.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js" %}" ></script>   
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.flash.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.html5.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.print.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js" %}" ></script>
+
+    <script src="{% static "vendors/datatables.net-keytable/js/dataTables.keyTable.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-responsive/js/dataTables.responsive.min.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js" %}" ></script>
+    <script src="{% static "vendors/datatables.net-scroller/js/dataTables.scroller.min.js" %}" ></script>
+    <script src="{% static "js/bootbox.min.js" %}"></script>
+
+    <script src="https://code.highcharts.com/modules/bullet.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{% static "build/js/custom.min.js" %}" ></script>
+    
+    <script>
+        
+    
+    $(function(){
+            combined_data = {{ data_comb | safe }}
+            hospital_data = {{ data_hosp | safe}}
+            
+            //Current Capacity
+            $("#AnegCU").text(hospital_data[0].fields["ANegative"])
+            $("#BnegCU").text(hospital_data[0].fields["BNegative"])
+            $("#ABnegCU").text(hospital_data[0].fields["ABNegative"])
+            $("#OnegCU").text(hospital_data[0].fields["ONegative"])
+            $("#AposCU").text(hospital_data[0].fields["APositive"])
+            $("#BposCU").text(hospital_data[0].fields["BPositive"])
+            $("#ABposCU").text(hospital_data[0].fields["ABPositive"])
+            $("#OposCU").text(hospital_data[0].fields["OPositive"])            
+            
+
+            
+            
+            //BLOOD Required
+            var req=""
+            var abud=""
+            if (hospital_data[0].fields.ABNegative < 120){
+                req = req + "AB-,"
+            }
+            else if(hospital_data[0].fields.ABNegative > 180){
+                abud = abud + "AB-,"
+            }
+            if (hospital_data[0].fields.BNegative < 120){
+                req = req + "B-,"
+            }
+            else if(hospital_data[0].fields.BNegative > 180){
+                abud = abud + "B-,"
+            }
+            if (hospital_data[0].fields.ANegative < 120){
+                req = req + "A-,"
+            }
+            else if(hospital_data[0].fields.ANegative > 180){
+                abud = abud + "A-,"
+            }
+            if (hospital_data[0].fields.ONegative < 120){
+                req = req + "O-,"
+            }
+            else if(hospital_data[0].fields.ONegative > 180){
+                abud = abud + "O-,"
+            }
+            if (hospital_data[0].fields.ABPositive < 120){
+                req = req + "AB+,"
+            }
+            else if (hospital_data[0].fields.ABPositive > 180){
+                abud = abud + "AB+,"
+            }
+            if (hospital_data[0].fields.APositive < 120){
+                req = req + "A+,"
+            }
+            else if (hospital_data[0].fields.APositive > 180){
+                abud = abud + "A+,"
+            }
+            if (hospital_data[0].fields.OPositive < 120){
+                req = req + "O+,"
+            }
+            else if (hospital_data[0].fields.OPositive > 180){
+                abud = abud + "O+,"
+            }
+            if (hospital_data[0].fields.BPositive < 120){
+                req = req + "B+,"
+            }
+            else if (hospital_data[0].fields.BPositive > 180){
+                abud = abud + "B+,"
+            }
+            req = req.slice(0, -1);
+            abud = abud.slice(0, -1);
+            $("#req").text(req);
+            $("#abud").text(abud);
+            
+            pred_don = {{ pred_don | safe}}
+            
+            console.log(combined_data);
+            console.log(hospital_data);
+            console.log(pred_don);
+            
+            //STOCK INFO
+            total_blood_donated = 0;
+            total_donations = 0
+            blood_info = {}
+            var blood_gp_wise = {
+                  "A+": 0,
+                  "B+": 0,
+                  "AB+": 0,
+                  "AB-": 0,
+                  "O+": 0,
+                  "O-": 0,
+                  "A-": 0,
+                  "B-": 0,                  
+                };
+                
+            var fit_unfit = {
+                "fit":0,
+                "unfit":0
+            }  
+
+            var blood_method = {
+                "CAMP":0,
+                "EME":0,
+                "BO":0,
+                "HOSP":0
+            }  
+
+            var blood_health = {
+                "HEP":0,
+                "HIV":0,
+                "OD":0,
+                "SYS":0           
+            
+            }        
+            $.each(combined_data, function( index, value ) {
+                if (combined_data[index].model == "hospital.blood_bank_master"){
+                        total_blood_donated = total_blood_donated + combined_data[index].fields.BLOOD_QTY;
+                        //DATE DONOR DATA
+                        var temp = combined_data[index].fields.DONATION_DATE.split("-")
+                        var check = new Date(temp[2], temp[1] - 1, temp[0])
+                        var today = new Date()
+                        
+                        if(combined_data[index].fields.BLOOD_STATUS == "FIT"){
+                            fit_unfit["fit"]++;
+                            
+                        }
+                        else{
+                            fit_unfit["unfit"]++;
+                        }
+                        
+                        
+                        if(combined_data[index].fields.BLOOD_COLL_METHOD == "CAMPIAGN"){
+                            blood_method["CAMP"]++;
+                            
+                        }
+                        else if(combined_data[index].fields.BLOOD_COLL_METHOD == "EMERGENCY"){
+                            blood_method["EME"]++;
+                            
+                        }
+                        else if(combined_data[index].fields.BLOOD_COLL_METHOD == "BLOODORG"){
+                            blood_method["BO"]++;
+                            
+                        }
+                        else if(combined_data[index].fields.BLOOD_COLL_METHOD == "HOSPITAL"){
+                            blood_method["HOSP"]++;
+                        }
+                        
+                        if(combined_data[index].fields.HEPATITUS_POS == "YES"){
+                            blood_health["HEP"]++;
+                            
+                        }
+                        else if(combined_data[index].fields.HIV_POS == "YES"){
+                            blood_health["HIV"]++;
+                            
+                        }
+                        else if(combined_data[index].fields.OTHER_DISEASE == "YES"){
+                            blood_health["OD"]++;
+                            
+                        }
+                        else if(combined_data[index].fields.SYSPHILIS == "YES"){
+                            blood_health["SYS"]++;
+                        }
+                        
+
+
+                        if (check < today){
+                            total_donations++
+                            if (!(combined_data[index].fields.DONOR_OP_ID in blood_info)){
+                                blood_info[combined_data[index].fields.DONOR_OP_ID] = 0
+                                
+                            }
+                            blood_info[combined_data[index].fields.DONOR_OP_ID]=blood_info[combined_data[index].fields.DONOR_OP_ID] + combined_data[index].fields.BLOOD_QTY
+                        }
+                }
+                else{
+                    blood_gp_wise[combined_data[index].fields.BLOOD_GROUP] = blood_gp_wise[combined_data[index].fields.BLOOD_GROUP] + blood_info[combined_data[index].pk]
+                
+                }
+                
+                
+            });
+            
+            $("#AnegCDon").text(blood_gp_wise["A-"].toFixed(2))
+            $("#BnegCDon").text(blood_gp_wise["B-"].toFixed(2))
+            $("#ABnegCDon").text(blood_gp_wise["AB-"].toFixed(2))
+            $("#OnegCDon").text(blood_gp_wise["O-"].toFixed(2))
+            $("#AposCDon").text(blood_gp_wise["A+"].toFixed(2))
+            $("#BposCDon").text(blood_gp_wise["B+"].toFixed(2))
+            $("#ABposCDon").text(blood_gp_wise["AB+"].toFixed(2))
+            $("#OposCDon").text(blood_gp_wise["O+"].toFixed(2))  
+
+            //BOTTOM DATA
+            $("#hep").text(blood_health["HEP"])
+            $("#hiv").text(blood_health["HIV"])
+            $("#od").text(blood_health["OD"])
+            $("#sys").text(blood_health["SYS"])
+
+    
+            Highcharts.setOptions({
+    chart: {
+        inverted: true,
+        marginLeft: 70,
+        type: 'bullet'
+    },
+    title: {
+        text: null
+    },
+    legend: {
+        enabled: false
+    },
+    yAxis: {
+        gridLineWidth: 0
+    },
+    plotOptions: {
+        series: {
+            pointPadding: 0.25,
+            borderWidth: 0,
+            color: '#2B4F81',
+            targetOptions: {
+                width: '200%'
+            }
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    }
+});
+
+            Highcharts.chart('containerA', {
+                chart: {
+                    marginTop: 40
+                },
+                title: {
+                    text: 'Current Stock Insight'
+                },
+                xAxis: {
+                    categories: ['<span class="hc-cat-title">A+</span>', '<span class="hc-cat-title">A-</span>']
+                },
+                yAxis: {
+                    plotBands: [{
+                        from: 0,
+                        to: 120,
+                        color: '#A2B5CD'
+                    }, {
+                        from: 120,
+                        to: 150,
+                        color: '#D9D9F3'
+                    }, {
+                        from: 150,
+                        to: 9e9,
+                        color: '#E6E8FA'
+                    }],
+                    title: null
+                },
+                series: [{
+                    data: [{
+                        y: hospital_data[0].fields["APositive"],
+                        target: 180
+                    },{
+                        y: hospital_data[0].fields["ANegative"],
+                        target: 180
+                    },
+                    
+                    
+                    ]
+                }],
+                tooltip: {
+                    pointFormat: '<b>{point.y}</b> (with target at {point.target})'
+                }
+            });
+            
+                      
+                        Highcharts.chart('containerB', {
+                chart: {
+                    marginTop: 40
+                },
+                title: {
+                    text: 'Current Stock Insight'
+                },
+                xAxis: {
+                    categories: ['<span class="hc-cat-title">B+</span>', '<span class="hc-cat-title">B-</span>']
+                },
+                yAxis: {
+                    plotBands: [{
+                        from: 0,
+                        to: 120,
+                        color: '#A2B5CD'
+                    }, {
+                        from: 120,
+                        to: 150,
+                        color: '#D9D9F3'
+                    }, {
+                        from: 150,
+                        to: 9e9,
+                        color: '#E6E8FA'
+                    }],
+                    title: null
+                },
+                series: [{
+                    data: [{
+                        y: hospital_data[0].fields["BPositive"],
+                        target: 180
+                    },{
+                        y: hospital_data[0].fields["BNegative"],
+                        target: 180
+                    },
+                    
+                    
+                    ]
+                }],
+                tooltip: {
+                    pointFormat: '<b>{point.y}</b> (with target at {point.target})'
+                }
+            });
+            
+                        Highcharts.chart('containerAB', {
+                chart: {
+                    marginTop: 40
+                },
+                title: {
+                    text: 'Current Stock Insight'
+                },
+                xAxis: {
+                    categories: ['<span class="hc-cat-title">AB+</span>', '<span class="hc-cat-title">AB-</span>']
+                },
+                yAxis: {
+                    plotBands: [{
+                        from: 0,
+                        to: 120,
+                        color: '#A2B5CD'
+                    }, {
+                        from: 120,
+                        to: 150,
+                        color: '#D9D9F3'
+                    }, {
+                        from: 150,
+                        to: 9e9,
+                        color: '#E6E8FA'
+                    }],
+                    title: null
+                },
+                series: [{
+                    data: [{
+                        y: hospital_data[0].fields["ABPositive"],
+                        target: 180
+                    },{
+                        y: hospital_data[0].fields["ABNegative"],
+                        target: 180
+                    },
+                    
+                    
+                    ]
+                }],
+                tooltip: {
+                    pointFormat: '<b>{point.y}</b> (with target at {point.target})'
+                }
+            });
+
+              Highcharts.chart('containerO', {
+                chart: {
+                    marginTop: 40
+                },
+                title: {
+                    text: 'Current Stock Insight'
+                },
+                xAxis: {
+                    categories: ['<span class="hc-cat-title">O+</span>', '<span class="hc-cat-title">O-</span>']
+                },
+                yAxis: {
+                    plotBands: [{
+                        from: 0,
+                        to: 120,
+                        color: '#A2B5CD'
+                    }, {
+                        from: 120,
+                        to: 150,
+                        color: '#D9D9F3'
+                    }, {
+                        from: 150,
+                        to: 9e9,
+                        color: '#E6E8FA'
+                    }],
+                    title: null
+                },
+                series: [{
+                    data: [{
+                        y: hospital_data[0].fields["OPositive"],
+                        target: 180
+                    },{
+                        y: hospital_data[0].fields["ONegative"],
+                        target: 180
+                    },
+                    
+                    
+                    ]
+                }],
+                tooltip: {
+                    pointFormat: '<b>{point.y}</b> (with target at {point.target})'
+                }
+            });
+            
+
+           Highcharts.chart('container', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'FIT | UNFIT '
+                },
+                xAxis: {
+                    categories: ['FIT','UNFIT'],
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Blood Donations',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    data: [fit_unfit["fit"],fit_unfit["unfit"]]
+                }]
+            });
+            
+            
+            Highcharts.chart('container2', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Blood Donation Type'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Brands',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'CAMPAIGNS',
+                            y: blood_method["CAMP"],
+                            sliced: true,
+                            selected: true
+                        }, {
+                            name: 'EMERGENCY',
+                            y: blood_method["EME"]
+                        }, {
+                            name: 'BLOOD ORGANIZATIONS',
+                            y: blood_method["BO"]
+                        }, {
+                            name: 'HOSPITALS',
+                            y: blood_method["HOSP"]
+                        }]
+                    }]
+});
+            
+            
+            
+            
+            
+            
+            
+            
+});
+
+ 
+    </script>
+    
+   
+    
+    
+    
+    
+  </body>
+</html>
